@@ -41,8 +41,9 @@ Before any file change, command with side effects, or commit, you MUST complete 
 2. **Clarify** — if a requirement is unclear, undocumented, or requires an assumption, STOP and ask. MUST NOT guess.
 3. **Flag mismatches** — if code and documentation disagree, state it and let the user decide. MUST NOT resolve it unilaterally.
 4. **Cover impact** — before planning, enumerate everything the change touches. You MUST account for: every doc that the change makes stale (README, `AGENTS.md`, comments, specs), and every side effect (migrations, config, env, build/install steps, symlink targets, downstream consumers, tests). MUST NOT leave an impacted doc or side effect unlisted; if one is intentionally out of scope, say so and why.
-5. **Plan** — produce a plan in the contract below.
-6. **Approval** — wait for explicit user approval of the plan. No change proceeds without it.
+5. **Define validation** — state how the change will be verified before it is considered done: tests to add or run, commands to execute, and manual checks. If the change genuinely cannot be tested, you MUST say "none" and why. MUST NOT propose a change with no validation strategy.
+6. **Plan** — produce a plan in the contract below.
+7. **Approval** — wait for explicit user approval of the plan. No change proceeds without it.
 
 ### Plan output contract
 ```
@@ -51,6 +52,7 @@ Changes:
   - <file/area>: <exact change>
 Docs to update: <impacted docs, or "none">
 Side effects: <migrations, config, install/build, downstream, tests, or "none">
+Validation & testing: <tests to add/run, commands, manual checks; or "none" + why>
 Trade-offs: <option A vs B, pros/cons> (omit if none)
 Open questions: <blocking unknowns> (omit if none)
 ```
