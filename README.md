@@ -34,7 +34,7 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
 | GitHub Copilot | `~/.copilot/skills/<name>` |
 | Gemini / Antigravity | `~/.gemini/config/skills/<name>` |
 
-Editing a skill's files takes effect immediately through the symlink. Because the symlinks are created per-skill, **re-run `make install` after adding a new skill** so its directory gets linked into each tool path. `make clean` removes the skill symlinks alongside the instruction-file symlinks.
+Editing a skill's files takes effect immediately through the symlink. Because the symlinks are created per-skill, **re-run `make install` after adding a new skill** so its directory gets linked into each tool path. `make uninstall` removes the skill symlinks alongside the instruction-file symlinks.
 
 ### Included skills
 

@@ -20,8 +20,8 @@ install:
 		done; \
 	done
 
-.PHONY: clean
-clean:
+.PHONY: uninstall
+uninstall:
 	@rm -f ~/.gemini/GEMINI.md
 	@rm -f ~/.claude/CLAUDE.md
 	@rm -f ~/.codex/AGENTS.md

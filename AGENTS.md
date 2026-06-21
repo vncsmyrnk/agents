@@ -20,7 +20,7 @@ make install
 ```
 To remove the installed symlinks:
 ```bash
-make clean
+make uninstall
 ```
 This section applies only to *this* repository; it is not a generic instruction.
 
