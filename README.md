@@ -21,6 +21,21 @@ This symlinks `AGENTS.md` into the locations each agent reads on startup:
 
 Because these are symlinks (`ln -sf`), edits to `AGENTS.md` in this repo take effect immediately for every tool — no reinstall needed.
 
+## Skills
+
+Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`skills/`](skills), one directory per skill (`skills/<name>/SKILL.md` plus any supporting files). `SKILL.md` is a shared, cross-tool format, so the same skill is distributed to every supported agent.
+
+`make install` symlinks each skill directory into each tool's skills path:
+
+| Tool | Location |
+| --- | --- |
+| Claude Code | `~/.claude/skills/<name>` |
+| Codex / Cursor | `~/.codex/skills/<name>` |
+| GitHub Copilot | `~/.copilot/skills/<name>` |
+| Gemini / Antigravity | `~/.gemini/config/skills/<name>` |
+
+Editing a skill's files takes effect immediately through the symlink. Because the symlinks are created per-skill, **re-run `make install` after adding a new skill** so its directory gets linked into each tool path. `make clean` removes the skill symlinks alongside the instruction-file symlinks.
+
 ## Updating
 
 Edit [`AGENTS.md`](AGENTS.md) directly. The change propagates to all tools through the existing symlinks.
@@ -28,6 +43,7 @@ Edit [`AGENTS.md`](AGENTS.md) directly. The change propagates to all tools throu
 Re-run `make install` only when:
 - A target file was deleted or replaced with a non-symlink.
 - You add a new agent location to the [`Makefile`](Makefile).
+- You add a new skill under [`skills/`](skills).
 
 ## Precedence
 

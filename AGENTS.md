@@ -14,7 +14,7 @@ Rules are written as **Trigger → Action**. If a trigger matches, the action is
 
 ## About this repository (repo-specific)
 
-This repo distributes this file to each agent's expected location via symlink. To install:
+This repo distributes this file — and the skills under `skills/` — to each agent's expected location via symlink. To install:
 ```bash
 make install
 ```
