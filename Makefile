@@ -10,8 +10,8 @@ install:
 	@ln -sf $(AGENTS_FILE) ~/.claude/CLAUDE.md
 	@mkdir -p ~/.codex
 	@ln -sf $(AGENTS_FILE) ~/.codex/AGENTS.md
-	@mkdir -p ~/.github
-	@ln -sf $(AGENTS_FILE) ~/.github/copilot-instructions.md
+	@mkdir -p ~/.copilot
+	@ln -sf $(AGENTS_FILE) ~/.copilot/copilot-instructions.md
 	@for path in $(SKILL_PATHS); do \
 		mkdir -p $$path; \
 		for skill in $(SKILLS_DIR)/*/; do \
@@ -25,7 +25,7 @@ clean:
 	@rm -f ~/.gemini/GEMINI.md
 	@rm -f ~/.claude/CLAUDE.md
 	@rm -f ~/.codex/AGENTS.md
-	@rm -f ~/.github/copilot-instructions.md
+	@rm -f ~/.copilot/copilot-instructions.md
 	@for path in $(SKILL_PATHS); do \
 		for skill in $(SKILLS_DIR)/*/; do \
 			[ -d "$$skill" ] || continue; \

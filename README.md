@@ -17,7 +17,7 @@ This symlinks `AGENTS.md` into the locations each agent reads on startup:
 | Gemini | `~/.gemini/GEMINI.md` |
 | Claude Code | `~/.claude/CLAUDE.md` |
 | Codex / Cursor | `~/.codex/AGENTS.md` |
-| GitHub Copilot | `~/.github/copilot-instructions.md` |
+| GitHub Copilot | `~/.copilot/copilot-instructions.md` |
 
 Because these are symlinks (`ln -sf`), edits to `AGENTS.md` in this repo take effect immediately for every tool — no reinstall needed.
 
