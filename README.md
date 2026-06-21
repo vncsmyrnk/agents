@@ -36,6 +36,13 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
 
 Editing a skill's files takes effect immediately through the symlink. Because the symlinks are created per-skill, **re-run `make install` after adding a new skill** so its directory gets linked into each tool path. `make clean` removes the skill symlinks alongside the instruction-file symlinks.
 
+### Included skills
+
+- `add-agents-requirement` — guides safe edits to the shared `AGENTS.md`
+  behavioral rules.
+- `brainstorm` — interviews the user to capture the goal document, first
+  assumptions, a working hypothesis, and clear goals before drafting.
+
 ## Updating
 
 Edit [`AGENTS.md`](AGENTS.md) directly. The change propagates to all tools through the existing symlinks.
