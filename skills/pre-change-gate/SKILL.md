@@ -1,6 +1,6 @@
 ---
 name: pre-change-gate
-description: Use before making a change — any file edit/create/delete, any command with side effects, or any commit. Guides the gate every change must pass: explore, clarify, flag mismatches, cover impact, define validation, then plan and get explicit user approval before proceeding. Also defines the Plan output contract. Do not use when only answering, exploring, or reviewing — the gate applies only when a change is about to be made.
+description: Use before making a change — any file edit/create/delete, any command with side effects, or any commit. Guides the gate every change must pass e.g. explore, clarify, flag mismatches, cover impact, define validation, then plan and get explicit user approval before proceeding. Also defines the Plan output contract. Do not use when only answering, exploring, or reviewing — the gate applies only when a change is about to be made.
 ---
 
 # Pre-Change Gate
