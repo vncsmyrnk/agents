@@ -42,6 +42,8 @@ Editing a skill's files takes effect immediately through the symlink. Because th
   behavioral rules.
 - `brainstorm` — interviews the user to capture the goal document, first
   assumptions, a working hypothesis, and clear goals before drafting.
+- `pre-change-gate` — the gate every change passes before editing: explore,
+  clarify, cover impact, define validation, plan, and get approval.
 
 ## Updating
 

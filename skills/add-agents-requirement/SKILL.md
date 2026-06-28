@@ -1,6 +1,6 @@
 ---
 name: add-agents-requirement
-description: Use when adding, changing, or removing a behavioral requirement (rule) in the generic AGENTS.md instructions file. Guides the full Pre-Change Gate — clarify intent, classify MUST/MUST NOT/SHOULD, choose the correct section, check for conflicts and duplication, format the rule as a Trigger → Action pair, and emit the Plan output contract for approval before editing.
+description: Use when adding, changing, or removing a behavioral requirement (rule) in the generic AGENTS.md instructions file. Applies the pre-change-gate workflow — clarify intent, classify MUST/MUST NOT/SHOULD, choose the correct section, check for conflicts and duplication, format the rule as a Trigger → Action pair, and emit the Plan output contract for approval before editing.
 ---
 
 # Add a requirement to AGENTS.md
@@ -8,8 +8,8 @@ description: Use when adding, changing, or removing a behavioral requirement (ru
 This skill governs how a new requirement enters the generic `AGENTS.md` (the
 behavioral base layer shared across every AI CLI agent). `AGENTS.md` is a
 normative document with its own conventions; a careless edit erodes those
-conventions. Follow this workflow exactly — it IS the Pre-Change Gate applied to
-the file that defines the Pre-Change Gate.
+conventions. Follow this workflow exactly — it applies the **pre-change-gate**
+skill to the file that holds the shared behavioral rules.
 
 ## When to use
 
@@ -19,17 +19,19 @@ the file that defines the Pre-Change Gate.
   rather than a project-specific file.
 
 If the request is project-specific (build/test/run commands, repo layout,
-conventions for one codebase), it does NOT belong in this generic file — say so
-and direct it to that project's own `AGENTS.md`.
+conventions for one codebase) or belongs in a skill rather than the base layer,
+it does NOT go here — route it per **Where behavior is documented** in
+`AGENTS.md`.
 
 ## Workflow
 
 ### 1. Explore
 Read the current `AGENTS.md` in full before proposing anything. You must know
 the existing sections, their style, and the rules already present. The standard
-sections are: How to read this file, About this repository, Precedence,
-Pre-Change Gate, Communication, Alignment & Proactive Discussion, Technical
-Stance, Documentation & No-Drift, Version Control.
+sections are: How to read this file, The agent's role in software
+development, About this repository, Precedence, Making changes,
+Communication, Alignment & Proactive Discussion, Technical Stance,
+Documentation & No-Drift, Where behavior is documented, Version Control.
 
 ### 2. Clarify intent
 If the requirement's scope, strength, or trigger is unclear, STOP and ask. Do
@@ -74,8 +76,8 @@ file's existing keywords and domain language; do not introduce new vocabulary
 for concepts already named.
 
 ### 7. Plan and get approval
-Before editing, emit the **Plan output contract** exactly as `AGENTS.md`
-defines it:
+Before editing, emit the **Plan output contract** exactly as the
+**pre-change-gate** skill defines it:
 
 ```
 Goal: <one line>

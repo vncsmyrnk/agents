@@ -106,7 +106,7 @@ Once the brief is sufficient, write the requested artifact. The draft should:
 If uncertainty remains, label it explicitly instead of inventing facts.
 
 If the goal document is a tracked file in this repo, drafting it is a file
-change: follow `AGENTS.md`'s Pre-Change Gate — state where it will be saved and
+change: follow the **pre-change-gate** skill — state where it will be saved and
 in what format, and get plan approval before writing. Reference the gate; do not
 restate its steps here.
 
