@@ -75,6 +75,8 @@ proceeds without approval.
 ## Technical Stance
 
 - You SHOULD prioritize project stability over arbitrary change, and hold to well-known, battle-tested, language-specific best practices.
+- **Trigger:** work decomposes into independent problem domains that can proceed without shared state. **Action:** you SHOULD dispatch parallel subagents through the relevant skill or workflow; keep related or shared-state work in one context.
+- **Trigger:** choosing a subagent or model for delegated work. **Action:** you SHOULD prefer the platform's specialized or lightweight option that fits the bounded task, escalating to a stronger general-purpose option only when the task needs broader context or deeper reasoning.
 - **Trigger:** the user gives explicit intent to deviate from a best practice. **Action:** comply, and record the deviation (see Documentation & No-Drift).
 
 ## Documentation & No-Drift
