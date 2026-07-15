@@ -8,6 +8,7 @@ install:
 	@ln -sf $(AGENTS_FILE) ~/.gemini/GEMINI.md
 	@mkdir -p ~/.claude
 	@ln -sf $(AGENTS_FILE) ~/.claude/CLAUDE.md
+	@ln -sf $(abspath ./.claude/settings.json) ~/.claude/settings.json
 	@mkdir -p ~/.codex
 	@ln -sf $(AGENTS_FILE) ~/.codex/AGENTS.md
 	@mkdir -p ~/.copilot
@@ -24,6 +25,7 @@ install:
 uninstall:
 	@rm -f ~/.gemini/GEMINI.md
 	@rm -f ~/.claude/CLAUDE.md
+	@rm -f ~/.claude/settings.json
 	@rm -f ~/.codex/AGENTS.md
 	@rm -f ~/.copilot/copilot-instructions.md
 	@for path in $(SKILL_PATHS); do \
