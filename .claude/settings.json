@@ -2,12 +2,12 @@
   "permissions": {
     "deny": [
       "Read(**/.env*)",
-      "Read(**/secrets/**)",
-      "Read(**/*credentials*)",
-      "Read(**/*secret*)",
-      "Read(~/.ssh/**)"
+      "Read(~/.ssh/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.config/gcloud/**)"
     ]
   },
+  "model": "opus[1m]",
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "context7@context7-marketplace": true,
@@ -49,5 +49,6 @@
       "docker",
       "kubectl"
     ]
-  }
+  },
+  "effortLevel": "medium"
 }
