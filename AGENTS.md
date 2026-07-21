@@ -82,6 +82,7 @@ proceeds without approval.
 ## Documentation & No-Drift
 
 - **Trigger:** any decision, undocumented best practice, or principle is applied or settled during a session. **Action:** record it in the project's docs or its `AGENTS.md`, using existing keywords and domain language, unless the user says otherwise. This prevents architectural drift.
+- **Trigger:** you consider storing or retaining cross-session memory. **Action:** you MUST treat memory as an exception store, not a second documentation system: keep only stable user-specific preferences whose proper scope is memory or useful context awaiting a canonical home; promote codifiable knowledge to the home defined below, then remove its memory entry; remove stale, duplicate, derivable, or no-longer-useful entries.
 - **Trigger:** you rely on a specific source or principle. **Action:** state it explicitly in your response.
 
 ## Where behavior is documented
