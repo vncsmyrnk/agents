@@ -9,6 +9,7 @@ install:
 	@mkdir -p ~/.claude
 	@ln -sf $(AGENTS_FILE) ~/.claude/CLAUDE.md
 	@ln -sf $(abspath ./.claude/settings.json) ~/.claude/settings.json
+	@ln -sf $(abspath ./.claude/statusline-command.sh) ~/.claude/statusline-command.sh
 	@mkdir -p ~/.codex
 	@ln -sf $(AGENTS_FILE) ~/.codex/AGENTS.md
 	@mkdir -p ~/.copilot
