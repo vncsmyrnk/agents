@@ -14,6 +14,7 @@ install:
 	@ln -sf $(AGENTS_FILE) ~/.codex/AGENTS.md
 	@mkdir -p ~/.copilot
 	@ln -sf $(AGENTS_FILE) ~/.copilot/copilot-instructions.md
+	@ln -sf $(abspath ./.copilot/settings.json) ~/.copilot/settings.json
 	@for path in $(SKILL_PATHS); do \
 		mkdir -p $$path; \
 		for skill in $(SKILLS_DIR)/*/; do \
