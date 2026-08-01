@@ -21,6 +21,7 @@
     "enabled": true,
     "sandboxMcpServers": false,
     "sandboxLspServers": false,
+    "allowBypass": true,
     "userPolicy": {
       "filesystem": {
         "deniedPaths": [
