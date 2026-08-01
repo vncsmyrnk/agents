@@ -1,13 +1,4 @@
 {
-  "permissions": {
-    "deny": [
-      "Read(**/.env*)",
-      "Read(~/.ssh/**)",
-      "Read(~/.gnupg/**)",
-      "Read(~/.config/gcloud/**)"
-    ]
-  },
-  "model": "gpt-5.3-codex",
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "context7@context7-marketplace": true
@@ -30,31 +21,31 @@
     "enabled": true,
     "sandboxMcpServers": false,
     "sandboxLspServers": false,
-    "allowUnsandboxedCommands": false,
-    "network": {
-      "allowedDomains": []
-    },
-    "filesystem": {
-      "allowWrite": [
-        "/tmp",
-        "~/.copilot"
-      ],
-      "denyRead": [
-        "~/.ssh",
-        "~/.gnupg",
-        "~/.config/gcloud",
-        "**/secrets/**",
-        "**/*credentials*",
-        "**/*secret*"
-      ]
-    },
-    "excludedCommands": [
-      "docker",
-      "kubectl"
-    ]
+    "userPolicy": {
+      "filesystem": {
+        "deniedPaths": [
+          "~/.gnupg/**",
+          "~/.ssh/**",
+          "~/.config/**",
+          "**/.env*"
+        ]
+      }
+    }
   },
-  "effortLevel": "medium",
   "footer": {
     "showSandbox": true
-  }
+  },
+  "allowedUrls": [
+    "https://direnv.net",
+    "https://www.gnu.org",
+    "https://just.systems",
+    "https://taskfile.dev",
+    "https://docs.deno.com",
+    "https://www.nushell.sh",
+    "https://doc.rust-lang.org",
+    "https://docs.rs",
+    "https://elv.sh",
+    "https://pkg.go.dev",
+    "https://toml.io"
+  ]
 }
