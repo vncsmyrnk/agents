@@ -4,7 +4,8 @@
       "Read(**/.env*)",
       "Read(~/.ssh/**)",
       "Read(~/.gnupg/**)",
-      "Read(~/.config/gcloud/**)"
+      "Read(~/.config/gcloud/**)",
+      "Read(**/.edgerc)"
     ]
   },
   "model": "opus[1m]",
@@ -42,7 +43,8 @@
       "denyRead": [
         "~/.ssh",
         "~/.gnupg",
-        "~/.config/gcloud"
+        "~/.config/gcloud",
+        "**/.edgerc"
       ]
     },
     "excludedCommands": [
