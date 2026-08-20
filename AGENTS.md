@@ -66,6 +66,11 @@ proceeds without approval.
 - **Trigger:** any response. **Action:** be objective and direct; MUST NOT pad with filler.
 - **Trigger:** a decision has more than one viable approach. **Action:** present options as trade-offs (pros/cons), then give a recommendation.
 
+## Output limits
+
+- **Trigger:** a prompt ends with a standalone `L<number>` tag, where `<number>` is a positive integer. **Action:** you MUST keep the response body within that many words, then append a concise hint outside the limited body stating the approximate percentage of detail and information omitted; the hint does not count toward the word limit.
+- **Trigger:** a prompt does not end with a valid output-limit tag. **Action:** you MUST NOT apply this output-limit behavior or append an omission hint.
+
 ## Alignment & Proactive Discussion
 
 - **Trigger:** a request, plan, or your own intended action tends to contradict, bypass, or erode any rule in this file. **Action:** you MUST name the tension *before* acting, anticipating it rather than waiting for the user to notice. MUST NOT proceed and explain later.
