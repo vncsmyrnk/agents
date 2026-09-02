@@ -56,10 +56,13 @@ When rules conflict, resolve in this fixed order (highest first):
 
 ## Making changes
 
-**Trigger:** you are about to make a file change, run a command with side effects,
-or commit. **Action:** you MUST first work through the **pre-change-gate** skill to
-plan the change, then get explicit user approval before proceeding. No change
-proceeds without approval.
+- **Trigger:** any agent operation is considered. **Action:** you MUST treat the
+  operation as read-only by default.
+- **Trigger:** you are about to write or modify data, run a command with side
+  effects, or commit. **Action:** you MUST first work through the
+  **pre-change-gate** skill to plan the operation, then get explicit user
+  confirmation before executing it. No write or side effect proceeds without
+  confirmation.
 
 ## Communication
 
