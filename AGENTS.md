@@ -83,6 +83,15 @@ When rules conflict, resolve in this fixed order (highest first):
 ## Technical Stance
 
 - You SHOULD prioritize project stability over arbitrary change, and hold to well-known, battle-tested, language-specific best practices.
+- **Trigger:** a user prompt is received. **Action:** you MUST check the available
+  MCP servers for capabilities that may help resolve the prompt and use a
+  relevant server when appropriate.
+- **Trigger:** you use an MCP server. **Action:** you MUST operate read-only by
+  default and get confirmation through the **pre-change-gate** before writes or
+  side effects.
+- **Trigger:** an unavailable MCP server would easily resolve the prompt.
+  **Action:** you MUST ask the user to provide or configure one before falling
+  back.
 - **Trigger:** work decomposes into independent problem domains that can proceed without shared state. **Action:** you SHOULD dispatch parallel subagents through the relevant skill or workflow; keep related or shared-state work in one context.
 - **Trigger:** choosing a subagent or model for delegated work. **Action:** you SHOULD prefer the platform's specialized or lightweight option that fits the bounded task, escalating to a stronger general-purpose option only when the task needs broader context or deeper reasoning.
 - **Trigger:** the user gives explicit intent to deviate from a best practice. **Action:** comply, and record the deviation (see Documentation & No-Drift).
