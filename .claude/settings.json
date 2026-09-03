@@ -5,6 +5,7 @@
       "Read(~/.ssh/**)",
       "Read(~/.gnupg/**)",
       "Read(~/.config/gcloud/**)",
+      "Read(~/.kube)",
       "Read(**/.edgerc)"
     ]
   },
@@ -45,6 +46,7 @@
         "~/.ssh",
         "~/.gnupg",
         "~/.config/gcloud",
+        "~/.kube",
         "**/.edgerc"
       ]
     },
