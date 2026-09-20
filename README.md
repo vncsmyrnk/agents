@@ -1,4 +1,4 @@
-# agents
+[![GitHub main branch check runs](https://img.shields.io/github/check-runs/vncsmyrnk/agents/main?style=plastic&logo=github&label=CI%20workflow)](https://github.com/vncsmyrnk/agents/actions/workflows/ci.yaml)
 
 A single, generic [`AGENTS.md`](AGENTS.md) shared across every AI CLI agent. It defines the **behavioral base layer** — *how* an agent should work (clarify, plan, get approval, document, commit) — independent of any specific project.
 
@@ -7,6 +7,8 @@ Instead of maintaining one instruction file per tool, this repo keeps one source
 ## Install
 
 ```bash
+autoreconf -fi
+./configure
 make install
 ```
 
@@ -14,9 +16,7 @@ This symlinks `AGENTS.md` into the locations each agent reads on startup:
 
 | Tool | Location |
 | --- | --- |
-| Gemini | `~/.gemini/GEMINI.md` |
 | Claude Code | `~/.claude/CLAUDE.md` |
-| Codex / Cursor | `~/.codex/AGENTS.md` |
 | GitHub Copilot | `~/.copilot/copilot-instructions.md` |
 
 Because these are symlinks (`ln -sf`), edits to `AGENTS.md` in this repo take effect immediately for every tool — no reinstall needed.
@@ -30,9 +30,7 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
 | Tool | Location |
 | --- | --- |
 | Claude Code | `~/.claude/skills/<name>` |
-| Codex / Cursor | `~/.codex/skills/<name>` |
 | GitHub Copilot | `~/.copilot/skills/<name>` |
-| Gemini / Antigravity | `~/.gemini/config/skills/<name>` |
 
 Editing a skill's files takes effect immediately through the symlink. Because the symlinks are created per-skill, **re-run `make install` after adding a new skill** so its directory gets linked into each tool path. `make uninstall` removes the skill symlinks alongside the instruction-file symlinks.
 
@@ -59,8 +57,3 @@ Re-run `make install` only when:
 ## Precedence
 
 The rules in `AGENTS.md` are the base layer. A project's own `AGENTS.md` and any explicit in-session user instruction take precedence over it — see the **Precedence** section in [`AGENTS.md`](AGENTS.md).
-
-## Requirements
-
-- GNU Make
-- A POSIX shell with `ln` and `mkdir` (Linux/macOS)
