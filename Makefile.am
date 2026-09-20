@@ -15,7 +15,9 @@ EXTRA_DIST = \
 
 dist_claude_DATA = \
 	CLAUDE.md \
-	.claude/settings.json \
+	.claude/settings.json
+
+dist_claude_SCRIPTS = \
 	.claude/statusline-command.sh
 
 CLAUDE.md: AGENTS.md
