@@ -4,6 +4,7 @@
       "Read(**/.env*)",
       "Read(~/.ssh/**)",
       "Read(~/.gnupg/**)",
+      "Read(~/.config/**)",
       "Read(~/.config/gcloud/**)",
       "Read(~/.kube)",
       "Read(**/.edgerc)"
@@ -45,6 +46,7 @@
       "denyRead": [
         "~/.ssh",
         "~/.gnupg",
+        "~/.config",
         "~/.config/gcloud",
         "~/.kube",
         "**/.edgerc"
