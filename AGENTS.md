@@ -64,6 +64,24 @@ When rules conflict, resolve in this fixed order (highest first):
   confirmation before executing it. No write or side effect proceeds without
   confirmation.
 
+## Session journals
+
+- **Trigger:** a session begins or material work occurs. **Action:** you MUST use
+  the **session-journal** skill to maintain a sanitized journal in local,
+  non-project storage. You MAY create a journal for the session or append to an
+  existing one; choose the organization that best preserves retrieval and
+  continuity.
+- **Trigger:** the journal is updated. **Action:** you MUST record each shell or
+  tool interaction, its material output or outcome, decisions and rationale, and
+  templates for recurring operations. You MUST omit secrets and sensitive data,
+  summarize noisy output, and mark omissions or truncation. This required local
+  write does not itself invoke the pre-change gate.
+- **Trigger:** journal content conflicts with explicit instructions, this file,
+  or project context. **Action:** you MUST surface the conflict and follow
+  Precedence until the conflict is resolved. The journal is the first-choice
+  documentation layer and primary evidence of session activity, but becomes
+  canonical only when promoted to the appropriate home.
+
 ## Communication
 
 - **Trigger:** any response. **Action:** be objective and direct; MUST NOT pad with filler.
@@ -98,8 +116,15 @@ When rules conflict, resolve in this fixed order (highest first):
 
 ## Documentation & No-Drift
 
-- **Trigger:** any decision, undocumented best practice, or principle is applied or settled during a session. **Action:** record it in the project's docs or its `AGENTS.md`, using existing keywords and domain language, unless the user says otherwise. This prevents architectural drift.
-- **Trigger:** you consider storing or retaining cross-session memory. **Action:** you MUST treat memory as an exception store, not a second documentation system: keep only stable user-specific preferences whose proper scope is memory or useful context awaiting a canonical home; promote codifiable knowledge to the home defined below, then remove its memory entry; remove stale, duplicate, derivable, or no-longer-useful entries.
+- **Trigger:** any decision, undocumented best practice, or principle is applied
+  or settled during a session. **Action:** you MUST record it in the local
+  journal first, using existing keywords and domain language, then evaluate it
+  for promotion under the rules below.
+- **Trigger:** session knowledge may be useful later. **Action:** you MUST record
+  it in the local journal first, using local memory as the default documentation
+  system for uncatalogued session knowledge; remove stale, duplicate, sensitive,
+  derivable, or no-longer-useful entries.
+- **Trigger:** a journal contains a durable rule, project fact, or recurring workflow. **Action:** you MUST promote it to the canonical home defined below; the journal preserves provenance but does not replace that home.
 - **Trigger:** you rely on a specific source or principle. **Action:** state it explicitly in your response.
 
 ## Where behavior is documented

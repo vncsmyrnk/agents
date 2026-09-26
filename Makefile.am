@@ -7,7 +7,8 @@ copilotskillsdir = $(copilotdir)
 SKILLS = skills/add-agents-requirement/SKILL.md \
 	skills/brainstorm/SKILL.md \
 	skills/discussion/SKILL.md \
-	skills/pre-change-gate/SKILL.md
+	skills/pre-change-gate/SKILL.md \
+	skills/session-journal/SKILL.md
 
 CLEANFILES =
 EXTRA_DIST = \

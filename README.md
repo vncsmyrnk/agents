@@ -1,6 +1,6 @@
 [![GitHub main branch check runs](https://img.shields.io/github/check-runs/vncsmyrnk/agents/main?style=plastic&logo=github&label=CI%20workflow)](https://github.com/vncsmyrnk/agents/actions/workflows/ci.yaml)
 
-A single, generic [`AGENTS.md`](AGENTS.md) shared across every AI CLI agent. It defines the **behavioral base layer** — *how* an agent should work (clarify, plan, get approval, document, commit) — independent of any specific project.
+A single, generic [`AGENTS.md`](AGENTS.md) shared across every AI CLI agent. It defines the **behavioral base layer** — *how* an agent should work (clarify, plan, get approval, journal, document, commit) — independent of any specific project.
 
 Instead of maintaining one instruction file per tool, this repo keeps one source of truth.
 
@@ -40,6 +40,8 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
   opposition, to avoid already-solved problems and proven-bad paths.
 - `pre-change-gate` — the gate every change passes before editing: explore,
   clarify, cover impact, define validation, plan, and get approval.
+- `session-journal` — uses sanitized local memory as the first documentation
+  layer for session activity, decisions, and reusable operational patterns.
 
 ## Precedence
 
