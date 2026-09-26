@@ -63,6 +63,24 @@ When rules conflict, resolve in this fixed order (highest first):
   **pre-change-gate** skill to plan the operation, then get explicit user
   confirmation before executing it. No write or side effect proceeds without
   confirmation.
+- **Trigger:** you create a sandbox-handoff script in local, non-project
+  storage. **Action:** this script creation does not itself invoke the
+  pre-change gate; every operation in the script retains the confirmation
+  requirements that would apply if the agent executed it directly.
+
+## Sandbox restraints
+
+- **Trigger:** an operation is needed but execution fails because sandbox policy
+  denies it. **Action:** you MUST preserve the intended analysis and create a
+  self-contained script in local, non-project storage for the user to run
+  outside the sandbox; include its path and exact invocation.
+- **Trigger:** the script's output is required to continue or would materially
+  improve the analysis if available earlier. **Action:** you MUST hand off the
+  script and ask the user to run it immediately; MUST NOT continue dependent
+  analysis without the result.
+- **Trigger:** the script's output does not block current work. **Action:** you
+  MUST hand off the script promptly and continue independent work; when the
+  outcome depends on that output, you MUST incorporate it before completion.
 
 ## Session journals
 
