@@ -89,11 +89,15 @@ When rules conflict, resolve in this fixed order (highest first):
   non-project storage. You MAY create a journal for the session or append to an
   existing one; choose the organization that best preserves retrieval and
   continuity.
+- **Trigger:** a session begins or journal/project records change. **Action:**
+  you MUST consult and maintain a persistent, local, non-project index using
+  **session-journal**, so later sessions can find journals and canonical project
+  information.
 - **Trigger:** the journal is updated. **Action:** you MUST record each shell or
   tool interaction, its material output or outcome, decisions and rationale, and
   templates for recurring operations. You MUST omit secrets and sensitive data,
-  summarize noisy output, and mark omissions or truncation. This required local
-  write does not itself invoke the pre-change gate.
+  summarize noisy output, and mark omissions or truncation. Required local
+  journal and index writes do not themselves invoke the pre-change gate.
 - **Trigger:** journal content conflicts with explicit instructions, this file,
   or project context. **Action:** you MUST surface the conflict and follow
   Precedence until the conflict is resolved. The journal is the first-choice

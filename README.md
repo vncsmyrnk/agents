@@ -41,7 +41,9 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
 - `pre-change-gate` — the gate every change passes before editing: explore,
   clarify, cover impact, define validation, plan, and get approval.
 - `session-journal` — uses sanitized local memory as the first documentation
-  layer for session activity, decisions, and reusable operational patterns.
+  layer for session activity, decisions, and reusable operational patterns;
+  maintains a shared index at `~/.local/share/agent-memory/index.md` for retrieving
+  journals and canonical project information across sessions.
 
 ## Precedence
 
