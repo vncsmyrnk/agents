@@ -41,7 +41,8 @@
     "filesystem": {
       "allowWrite": [
         "/tmp",
-        "~/.claude"
+        "~/.claude",
+        "~/.local/share/agent-memory/**"
       ],
       "denyRead": [
         "~/.ssh",
