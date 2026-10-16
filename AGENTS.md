@@ -84,6 +84,13 @@ When rules conflict, resolve in this fixed order (highest first):
 
 ## Session journals
 
+- **Trigger:** you store local journals, memories, or reusable scripts.
+  **Action:** you MUST use `~/.local/share/agent-memory/journals/`,
+  `~/.local/share/agent-memory/memory/`, or
+  `~/.local/share/agent-memory/scripts/`, respectively, outside all projects.
+  You MUST NOT use vendor-specific roots such as `~/.claude` for this
+  knowledge base. Canonical project documentation remains in its documented
+  home; temporary scripts remain in local, non-project session storage.
 - **Trigger:** a session begins or material work occurs. **Action:** you MUST use
   the **session-journal** skill to maintain a sanitized journal in local,
   non-project storage. You MAY create a journal for the session or append to an

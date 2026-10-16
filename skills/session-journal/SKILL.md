@@ -14,9 +14,20 @@ journals and canonical project information.
 
 ## Required record
 
-Create a session journal or append to an existing journal. Store
-it outside the project. Project instructions may select an external location,
-but cannot move the journal into project storage.
+Create a session journal or append to an existing journal under
+`~/.local/share/agent-memory/journals/`, outside all projects. Use the shared
+knowledge-base layout below; do not select vendor-specific roots such as
+`~/.claude` or `~/.copilot`.
+
+| Content | Required location |
+| --- | --- |
+| Session journals | `~/.local/share/agent-memory/journals/` |
+| Curated local memories | `~/.local/share/agent-memory/memory/` |
+| Reusable scripts | `~/.local/share/agent-memory/scripts/` |
+
+Canonical project documentation stays in its documented home; the index links
+to it rather than copying it into local memory. Temporary scripts stay in local,
+non-project session storage.
 
 For each material action, record:
 
@@ -68,6 +79,11 @@ removed, or receives promoted knowledge; refresh topics/dates after material
 activity. Repair stale links and remove obsolete entries when discovered.
 Existing journals found during retrieval must be indexed. Keep unrelated
 projects with the same name separate.
+
+Legacy records outside the shared root remain readable through indexed links;
+write new records and updates under the required locations. Moving legacy
+records and updating their links requires explicit approval through the
+**pre-change-gate**; do not migrate them silently.
 
 Apply the journal's sanitization rules to index entries. Required local journal
 and index writes share the journal-write exception in `AGENTS.md`; edits to

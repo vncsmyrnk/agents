@@ -45,6 +45,23 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
   maintains a shared index at `~/.local/share/agent-memory/index.md` for retrieving
   journals and canonical project information across sessions.
 
+## Local knowledge base
+
+All agents use `~/.local/share/agent-memory/`, outside project storage:
+
+| Content | Path under the shared root |
+| --- | --- |
+| Session journals | `journals/` |
+| Curated local memories | `memory/` |
+| Reusable scripts | `scripts/` |
+| Shared retrieval index | `index.md` |
+
+Vendor-specific directories such as `~/.claude` and `~/.copilot` remain tool
+configuration and installation locations, not knowledge-base roots. Canonical
+project documentation stays in its project; temporary scripts stay in local,
+non-project session storage. Existing indexed legacy records remain readable;
+relocation requires explicit approval.
+
 ## Precedence
 
 The rules in `AGENTS.md` are the base layer. A project's own `AGENTS.md` and any explicit in-session user instruction take precedence over it — see the **Precedence** section in [`AGENTS.md`](AGENTS.md).
