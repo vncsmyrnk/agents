@@ -22,12 +22,18 @@ knowledge-base layout below; do not select vendor-specific roots such as
 | Content | Required location |
 | --- | --- |
 | Session journals | `~/.local/share/agent-memory/journals/` |
+| Fetched, MCP, and pasted artifacts | `~/.local/share/agent-memory/journals/<journal-stem>/` |
 | Curated local memories | `~/.local/share/agent-memory/memory/` |
 | Reusable scripts | `~/.local/share/agent-memory/scripts/` |
 
 Canonical project documentation stays in its documented home; the index links
 to it rather than copying it into local memory. Temporary scripts stay in local,
 non-project session storage.
+
+When you fetch data from external sources or MCP servers, or receive pasted data
+from the user, persist the sanitized payload in the journal's companion
+directory (`~/.local/share/agent-memory/journals/<journal-stem>/`) and link it
+from the journal entry instead of dumping raw payloads inline.
 
 For each material action, record:
 
@@ -45,7 +51,10 @@ or truncation. Never run commands solely to complete the journal.
 
 1. Consult the index below, select a local, non-project journal, and record
    session context. Create the index if it does not exist.
-2. After each interaction, append it and its material result while fresh.
+2. After each interaction, append it and its material result while fresh;
+   persist sanitized external, MCP, or user-pasted payloads in
+   `~/.local/share/agent-memory/journals/<journal-stem>/` and link them from the
+   entry.
 3. Record decisions when made; do not reconstruct rationale at session end.
 4. Generalize recurring operations without embedding credentials, secrets, or
    accidental one-off values.
@@ -85,9 +94,10 @@ write new records and updates under the required locations. Moving legacy
 records and updating their links requires explicit approval through the
 **pre-change-gate**; do not migrate them silently.
 
-Apply the journal's sanitization rules to index entries. Required local journal
-and index writes share the journal-write exception in `AGENTS.md`; edits to
-linked project documents and other operations still require the pre-change gate.
+Apply the journal's sanitization rules to index entries and companion artifacts.
+Required local journal, companion-artifact, and index writes share the
+journal-write exception in `AGENTS.md`; edits to linked project documents and
+other operations still require the pre-change gate.
 
 ## Authority and conflicts
 
@@ -123,6 +133,8 @@ they are resolved.
 
 - No journal was selected for an active session.
 - Commands or tool calls are missing.
+- Fetched, MCP, or user-pasted data was not persisted in the journal's companion
+  directory.
 - The index is missing, stale, or was skipped before retrieving prior information.
 - Secrets, tokens, or complete environment dumps appear.
 - A journal entry silently overrides canonical guidance.

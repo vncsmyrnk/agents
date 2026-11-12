@@ -41,9 +41,10 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
 - `pre-change-gate` — the gate every change passes before editing: explore,
   clarify, cover impact, define validation, plan, and get approval.
 - `session-journal` — uses sanitized local memory as the first documentation
-  layer for session activity, decisions, and reusable operational patterns;
-  maintains a shared index at `~/.local/share/agent-memory/index.md` for retrieving
-  journals and canonical project information across sessions.
+  layer for session activity, persisted external/MCP/pasted artifacts,
+  decisions, and reusable operational patterns; maintains a shared index at
+  `~/.local/share/agent-memory/index.md` for retrieving journals and canonical
+  project information across sessions.
 
 ## Local knowledge base
 
@@ -52,6 +53,7 @@ All agents use `~/.local/share/agent-memory/`, outside project storage:
 | Content | Path under the shared root |
 | --- | --- |
 | Session journals | `journals/` |
+| Fetched, MCP, and pasted artifacts | `journals/<journal-stem>/` |
 | Curated local memories | `memory/` |
 | Reusable scripts | `scripts/` |
 | Shared retrieval index | `index.md` |

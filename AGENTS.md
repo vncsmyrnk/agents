@@ -104,7 +104,13 @@ When rules conflict, resolve in this fixed order (highest first):
   tool interaction, its material output or outcome, decisions and rationale, and
   templates for recurring operations. You MUST omit secrets and sensitive data,
   summarize noisy output, and mark omissions or truncation. Required local
-  journal and index writes do not themselves invoke the pre-change gate.
+  journal, companion-artifact, and index writes do not themselves invoke the
+  pre-change gate.
+- **Trigger:** you fetch data from external sources or MCP servers, or receive
+  pasted data from the user. **Action:** you MUST persist the sanitized payload
+  in the session journal's companion directory
+  (`~/.local/share/agent-memory/journals/<journal-stem>/`) and link it from the
+  journal.
 - **Trigger:** journal content conflicts with explicit instructions, this file,
   or project context. **Action:** you MUST surface the conflict and follow
   Precedence until the conflict is resolved. The journal is the first-choice
