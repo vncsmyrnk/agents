@@ -9,17 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
 
-      - name: Bootstrap the build system
-        run: autoreconf --install --force
+      - run: ./build/merge-json --self-test
 
-      - name: Configure
-        run: ./configure
-
-      - name: Build
-        run: make
-
-      - name: Run Distcheck
-        run: make distcheck
+      - run: autoreconf --install --force
+      - run: ./configure
+      - run: make
+      - run: make distcheck

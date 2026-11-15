@@ -58,11 +58,19 @@ When rules conflict, resolve in this fixed order (highest first):
 
 - **Trigger:** any agent operation is considered. **Action:** you MUST treat the
   operation as read-only by default.
-- **Trigger:** you are about to write or modify data, run a command with side
-  effects, or commit. **Action:** you MUST first work through the
+- **Trigger:** you are about to make a non-trivial change — multi-file,
+  irreversible, outward-facing (push, deploy, network write), loosening
+  permissions, or exposing secrets. Changes that only tighten permissions do
+  not count. **Action:** you MUST first work through the
   **pre-change-gate** skill to plan the operation, then get explicit user
-  confirmation before executing it. No write or side effect proceeds without
-  confirmation.
+  confirmation before executing it.
+- **Trigger:** you are about to make a trivial change — single file,
+  reversible, and explicitly requested. **Action:** you MAY proceed without the
+  gate; you MUST state what changed and how it was validated.
+- **Trigger:** the session runs in auto mode. **Action:** for non-trivial
+  changes, you MUST still state the gate's plan, but MAY proceed without
+  waiting for approval; irreversible or outward-facing changes still require
+  explicit user confirmation.
 - **Trigger:** you create a sandbox-handoff script in local, non-project
   storage. **Action:** this script creation does not itself invoke the
   pre-change gate; every operation in the script retains the confirmation
@@ -178,4 +186,3 @@ When a rule, principle, or workflow is settled, record it in the home that fits 
 ## Version Control
 
 - Commit messages MUST follow Conventional Commits (`feat:`, `fix:`, `chore:`, …).
-- **Trigger:** you want to commit. **Action:** commit ONLY when the user explicitly requests it. MUST NOT auto-commit.

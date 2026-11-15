@@ -16,8 +16,22 @@ This copies `AGENTS.md` into the locations each agent reads on startup:
 
 | Tool | Location |
 | --- | --- |
-| Claude Code | `~/.claude/CLAUDE.md` |
-| GitHub Copilot | `~/.copilot/copilot-instructions.md` |
+| Claude Code | `~/.claude/CLAUDE.md`, `~/.claude/settings.json`, `~/.claude/unattended.json` |
+| GitHub Copilot | `~/.copilot/copilot-instructions.md`, `~/.copilot/settings.json` |
+
+### Private settings
+
+Company- or machine-specific Claude Code settings (e.g. MCP permission rules
+naming internal tools) live in `.claude/settings.private.json`, which is
+gitignored. When present, `make install` merges it into the installed
+`~/.claude/settings.json` (requires `jq`): objects deep-merge and
+`permissions.allow`/`ask`/`deny` arrays are concatenated. Likewise, internal
+MCP servers live in `.claude/default.mcp.private.json` (gitignored) and are
+deep-merged into the installed `~/.claude/default.mcp.json`. Example:
+
+```json
+{ "permissions": { "allow": ["mcp__internal__read_tool"], "ask": ["mcp__internal__write_tool"] } }
+```
 
 ## Skills
 
@@ -38,7 +52,7 @@ Reusable [Agent Skills](https://code.claude.com/docs/en/skills) live under [`ski
   assumptions, a working hypothesis, and clear goals before drafting.
 - `discussion` — pressure-tests a clear goal and partial approach as a loyal
   opposition, to avoid already-solved problems and proven-bad paths.
-- `pre-change-gate` — the gate every change passes before editing: explore,
+- `pre-change-gate` — the gate every non-trivial change passes before editing: explore,
   clarify, cover impact, define validation, plan, and get approval.
 - `session-journal` — uses sanitized local memory as the first documentation
   layer for session activity, persisted external/MCP/pasted artifacts,

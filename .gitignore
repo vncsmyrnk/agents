@@ -1,5 +1,8 @@
 CLAUDE.md
 copilot-instructions.md
+/claude-unattended
+/*.tar.gz
+/.claude-out
 
 # http://www.gnu.org/software/automake
 
@@ -57,3 +60,7 @@ m4/lt~obsolete.m4
 # can automatically generate from config.status script
 # (which is called by configure script))
 Makefile
+
+# Private, company-specific settings merged at install time
+/.claude/settings.private.json
+/.claude/default.mcp.private.json

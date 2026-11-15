@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "usage: $0 [base file] [override file]"
+  echo
+  echo "uses jq to print to STDOUT to JSON object files merged, with array values also merged. For other types of conflicting properties, jq uses the override file value."
+}
+
+main() {
+  local run_self_test=false
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+    --self-test)
+      run_self_test=true
+      shift
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+    esac
+  done
+
+  if [[ "$run_self_test" = true ]]; then
+    self_test
+    exit 0
+  fi
+
+  local base="${1:-}"
+  local override="${2:-}"
+  if [[ -z "$override" ]]; then
+    usage >&2
+    exit 1
+  fi
+
+  exec jq -s '
+  . as $b
+  | $b[0] * $b[1] as $a
+  | $a
+  | [paths(type=="array") | select([.[] | numbers] | length == 0)]
+  | reduce .[] as $item ($a; . | setpath($item; ($b[0] | getpath($item)) + ($b[1] | getpath($item))))
+' "$base" "$override"
+}
+
+self_test() {
+  local fileA=$(mktemp)
+  cat <<'EOF' >"$fileA"
+  {
+    "a": 1,
+    "b": [1, 2],
+    "c": "foo",
+    "d": {"foo": "bar"}
+  }
+EOF
+
+  local fileB=$(mktemp)
+  cat <<'EOF' >"$fileB"
+  {
+    "a": 2,
+    "b": [3],
+    "d": {"foo": "bar"},
+    "e": "baz"
+  }
+EOF
+
+  local expected=$(mktemp)
+  jq <<'EOF' >"$expected"
+  {
+    "a": 2,
+    "b": [1, 2, 3],
+    "c": "foo",
+    "d": {"foo": "bar"},
+    "e": "baz"
+  }
+EOF
+
+  local actual=$(mktemp)
+  "$0" "$fileA" "$fileB" >"$actual"
+  trap "rm -f "$fileA" "$fileB" "$expected" "$actual"" EXIT
+
+  if ! diff_output=$(diff "$actual" "$expected"); then
+    echo "FAILED" >&2
+    echo "\n$diff_output"
+    exit 1
+  fi
+
+  echo "PASS"
+}
+
+main "$@"
