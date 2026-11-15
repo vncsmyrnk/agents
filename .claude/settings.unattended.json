@@ -1,0 +1,63 @@
+{
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "paplay /usr/share/sounds/freedesktop/stereo/dialog-information.oga"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s\\n' 'Session mode: unattended. The unattended session rules in AGENTS.md apply.'"
+          }
+        ]
+      }
+    ]
+  },
+  "network": {
+    "allowedDomains": [],
+    "deniedDomains": []
+  },
+  "filesystem": {
+    "allowWrite": [],
+    "denyWrite": [],
+    "denyRead": []
+  },
+  "sandbox": {
+    "enabled": false
+  },
+  "permissions": {
+    "deny": [
+      "Bash(git push*)",
+      "mcp__*apply*",
+      "mcp__*create*",
+      "mcp__*update*",
+      "mcp__*delete*",
+      "mcp__*write*",
+      "mcp__*post*",
+      "mcp__*put*",
+      "mcp__*patch*",
+      "mcp__*merge*",
+      "mcp__*push*",
+      "mcp__*edit*",
+      "mcp__*remove*",
+      "mcp__*reply*",
+      "mcp__*submit*",
+      "mcp__*cancel*",
+      "mcp__*run*",
+      "mcp__*purge*",
+      "mcp__*upload*"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'printf \"Unattended\\n\"'"
+  }
+}

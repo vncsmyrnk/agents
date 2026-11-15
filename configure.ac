@@ -15,5 +15,7 @@ AC_ARG_WITH([copilotdir],
 )
 AC_SUBST([copilotdir])
 
+AC_PATH_PROG([SRT], [srt])
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

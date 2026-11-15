@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/readonly",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
+      }
+    },
+    "harmonia": {
+      "type": "http",
+      "url": "https://harmonia-mcp-gateway.sscdn.co/mcp",
+      "headers": {
+        "Authorization": "Bearer ${HARMONIA_MCP_API_KEY}"
+      },
+      "env": {
+        "HARMONIA_MCP_API_KEY": "${HARMONIA_MCP_API_KEY}"
+      }
+    }
+  }
+}

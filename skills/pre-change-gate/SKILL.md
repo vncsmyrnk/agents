@@ -17,7 +17,9 @@ change does not proceed until the final step — approval — is met.
 - You are about to commit.
 
 Do NOT invoke the gate when no change is being made — answering a question,
-exploring, or reviewing. It governs changes, not reads.
+exploring, or reviewing. It governs changes, not reads. In unattended sessions,
+follow the unattended rule in `AGENTS.md` (`Making changes`) in place of
+per-change confirmation.
 
 ## Workflow
 

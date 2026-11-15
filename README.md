@@ -16,8 +16,8 @@ This copies `AGENTS.md` into the locations each agent reads on startup:
 
 | Tool | Location |
 | --- | --- |
-| Claude Code | `~/.claude/CLAUDE.md` |
-| GitHub Copilot | `~/.copilot/copilot-instructions.md` |
+| Claude Code | `~/.claude/CLAUDE.md`, `~/.claude/settings.json`, `~/.claude/unattended.json` |
+| GitHub Copilot | `~/.copilot/copilot-instructions.md`, `~/.copilot/settings.json` |
 
 ## Skills
 

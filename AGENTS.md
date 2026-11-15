@@ -63,6 +63,10 @@ When rules conflict, resolve in this fixed order (highest first):
   **pre-change-gate** skill to plan the operation, then get explicit user
   confirmation before executing it. No write or side effect proceeds without
   confirmation.
+- **Trigger:** a session runs unattended. **Action:** in place of per-change
+  confirmation, you MUST run in an isolated worktree on a narrowly scoped task,
+  MUST NOT push, and MUST produce a final report that includes any blocked or
+  denied tools, commands, or reads that would have been useful.
 - **Trigger:** you create a sandbox-handoff script in local, non-project
   storage. **Action:** this script creation does not itself invoke the
   pre-change gate; every operation in the script retains the confirmation
@@ -178,4 +182,6 @@ When a rule, principle, or workflow is settled, record it in the home that fits 
 ## Version Control
 
 - Commit messages MUST follow Conventional Commits (`feat:`, `fix:`, `chore:`, …).
-- **Trigger:** you want to commit. **Action:** commit ONLY when the user explicitly requests it. MUST NOT auto-commit.
+- **Trigger:** you want to commit. **Action:** commit ONLY when the user
+  explicitly requests it, or on the isolated worktree branch of an unattended
+  session. MUST NOT auto-commit in attended sessions.
