@@ -1,4 +1,4 @@
-AC_INIT([gnome-config], [1.0])
+AC_INIT([agents], [1.0])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 AC_ARG_WITH([claudedir],
