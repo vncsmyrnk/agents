@@ -1,10 +1,9 @@
 claudedir = @claudedir@
 claudeskillsdir = $(claudedir)
+claudehooksdir = $(claudedir)/hooks
 
 copilotdir = @copilotdir@
 copilotskillsdir = $(copilotdir)
-
-agentsdir = $(datadir)/agents
 
 SKILLS = skills/add-agents-requirement/SKILL.md \
 	skills/brainstorm/SKILL.md \
@@ -14,6 +13,7 @@ SKILLS = skills/add-agents-requirement/SKILL.md \
 
 CLEANFILES =
 EXTRA_DIST = \
+	bin/agents \
 	AGENTS.md
 
 dist_claude_DATA = \
@@ -22,19 +22,40 @@ dist_claude_DATA = \
 	.claude/settings.unattended.json \
 	.claude/default.mcp.json
 
+dist_claudehooks_SCRIPTS = \
+	.claude/hooks/mcp-ask-unlisted.sh \
+	.claude/hooks/bash-ask-network.sh
+
 dist_claude_SCRIPTS = \
 	.claude/statusline-command.sh
 
-claude-unattended: bin/claude-unattended
+PRIVATE_SETTINGS = $(srcdir)/.claude/settings.private.json
+PRIVATE_MCP = $(srcdir)/.claude/default.mcp.private.json
+
+install-data-hook:
+	@if test -f $(PRIVATE_SETTINGS); then \
+		echo "merging $(PRIVATE_SETTINGS) into $(DESTDIR)$(claudedir)/settings.json"; \
+		jq -s '. as [$$a, $$b] | ($$a * $$b) | .permissions = (reduce ("allow", "ask", "deny") as $$k (.permissions // {}; (($$a.permissions[$$k] // []) + ($$b.permissions[$$k] // [])) as $$v | if $$v == [] then . else .[$$k] = $$v end))' \
+			$(DESTDIR)$(claudedir)/settings.json $(PRIVATE_SETTINGS) > $(DESTDIR)$(claudedir)/settings.json.tmp && \
+		mv $(DESTDIR)$(claudedir)/settings.json.tmp $(DESTDIR)$(claudedir)/settings.json; \
+	fi
+	@if test -f $(PRIVATE_MCP); then \
+		echo "merging $(PRIVATE_MCP) into $(DESTDIR)$(claudedir)/default.mcp.json"; \
+		jq -s '.[0] * .[1]' \
+			$(DESTDIR)$(claudedir)/default.mcp.json $(PRIVATE_MCP) > $(DESTDIR)$(claudedir)/default.mcp.json.tmp && \
+		mv $(DESTDIR)$(claudedir)/default.mcp.json.tmp $(DESTDIR)$(claudedir)/default.mcp.json; \
+	fi
+
+agents: bin/agents
 	sed \
-		-e 's|@DATADIR[@]|$(pkgdatadir)|g' \
-		-e 's|@AGENTSDIR[@]|$(agentsdir)|g' \
 		-e 's|@CLAUDEDIR[@]|$(claudedir)|g' \
-		-e 's|@SRT[@]|$(SRT)|g' < $< > $@
+		< $< > $@
 	chmod u+x $@
 
-dist_bin_SCRIPTS = claude-unattended
-agents_DATA = srt-settings.json
+dist_bin_SCRIPTS = \
+	agents
+
+CLEANFILES += agents
 
 CLAUDE.md: AGENTS.md
 	cp $< $@

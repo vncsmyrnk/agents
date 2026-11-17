@@ -7,26 +7,12 @@
         "-y",
         "@upstash/context7-mcp"
       ],
-      "env": {
-        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
-      }
+      "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(sops exec-env ~/.config/utilities/sops/claude-code.env \"printenv CONTEXT7_API_KEY\")\""
     },
     "github": {
       "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/readonly",
-      "headers": {
-        "Authorization": "Bearer ${GITHUB_TOKEN}"
-      }
-    },
-    "harmonia": {
-      "type": "http",
-      "url": "https://harmonia-mcp-gateway.sscdn.co/mcp",
-      "headers": {
-        "Authorization": "Bearer ${HARMONIA_MCP_API_KEY}"
-      },
-      "env": {
-        "HARMONIA_MCP_API_KEY": "${HARMONIA_MCP_API_KEY}"
-      }
+      "url": "https://api.githubcopilot.com/mcp",
+      "headersHelper": "printf '{\"Authorization\":\"Bearer %s\"}' \"$(gh auth token)\""
     }
   }
 }

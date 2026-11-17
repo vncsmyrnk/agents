@@ -62,6 +62,11 @@ or truncation. Never run commands solely to complete the journal.
    represented and the index reflects the current records.
 6. Promote durable rules, project facts, and workflows to their canonical home.
    Keep the journal as provenance.
+7. Write journal, companion, and index files with the agent's file-editing
+   tools (e.g. Write/Edit), using absolute paths. Do not write them through
+   shell heredocs, `cat >`/`>>`, or `cd … &&` chains: pasted content (pipes,
+   backticks, tables) can defeat the command parser and force a permission
+   prompt, while file-tool writes to the journal root can be pre-approved.
 
 ## Index and retrieval
 
