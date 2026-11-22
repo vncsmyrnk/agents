@@ -3,6 +3,7 @@ copilot-instructions.md
 /claude-unattended
 /*.tar.gz
 /.claude-out
+/agents
 
 # http://www.gnu.org/software/automake
 

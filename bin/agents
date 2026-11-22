@@ -9,7 +9,14 @@ usage() {
 }
 
 cmd_claude() {
-  exec claude --mcp-config "@CLAUDEDIR@/default.mcp.json" "$@"
+  local argv=(--mcp-config "@CLAUDEDIR@/default.mcp.json")
+  case "${1:-}" in
+  --agents-unattended)
+    shift
+    argv+=(--settings "@CLAUDEDIR@/settings.unattended.json")
+    ;;
+  esac
+  exec claude "${argv[@]}" "$@"
 }
 
 case "${1:-}" in

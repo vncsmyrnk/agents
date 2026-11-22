@@ -16,7 +16,7 @@ ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
 # Dim colors (safe on dark/light dimmed themes)
 DIM="\033[2m"
 RESET="\033[0m"
-BAR_FILLED="\033[2;36m"  # dim cyan
+BAR_FILLED="\033[2;36m" # dim cyan
 
 build_bar() {
   pct="$1"
@@ -27,9 +27,15 @@ build_bar() {
   empty=$((width - filled))
   bar=""
   i=0
-  while [ "$i" -lt "$filled" ]; do bar="${bar}#"; i=$((i + 1)); done
+  while [ "$i" -lt "$filled" ]; do
+    bar="${bar}#"
+    i=$((i + 1))
+  done
   i=0
-  while [ "$i" -lt "$empty" ]; do bar="${bar}-"; i=$((i + 1)); done
+  while [ "$i" -lt "$empty" ]; do
+    bar="${bar}-"
+    i=$((i + 1))
+  done
   printf '%s' "$bar"
 }
 
@@ -43,6 +49,10 @@ fi
 
 if [ -n "$ctx_tokens" ] && [ -n "$ctx_size" ]; then
   out="${out} ${DIM}|${RESET} ${DIM}${ctx_tokens}/${ctx_size} tokens${RESET}"
+fi
+
+if [[ "$(printenv AGENTS_UNATTENDED || "")" -eq 1 ]]; then
+  out+="${DIM} (unattended)${RESET}"
 fi
 
 printf '%b\n' "$out"

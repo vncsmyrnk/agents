@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s\\n' 'Session mode: unattended. The unattended session rules in AGENTS.md apply.'"
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "AGENTS_UNATTENDED": 1
+  }
+}
